@@ -1,8 +1,8 @@
 {
   "name": "nyam-pagination",
-  "version": "0.1.0",
-  "module": "dist/PaginationLayout.js",
-  "main": "dist/PaginationLayout.js",
+  "version": "0.1.3",
+  "module": "dist/NYAM_PAGINATION.js",
+  "main": "dist/NYAM_PAGINATION.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
