@@ -6,7 +6,7 @@ export default function PaginationLayout() {
   const PAGE_SIZE = 5;
   const [dataToShow, setDataToShow] = useState([]);
   const [wholePages, setWholePages] = useState(0);
-  const [pageNum, setPageNum] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
 
   const dividedPageItems = (data) => {
     if (!data.length) return [];
@@ -21,7 +21,7 @@ export default function PaginationLayout() {
   useEffect(() => {
     const pagedItem = dividedPageItems(yourDataItems);
     setWholePages(pagedItem.length);
-    setDataToShow(pagedItem[pageNum] || []);
+    setDataToShow(pagedItem[pageNum - 1] || []);
   }, [pageNum, yourDataItems]);
 
   return (

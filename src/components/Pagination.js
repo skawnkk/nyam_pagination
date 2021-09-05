@@ -1,5 +1,9 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+//PAGE_SIZE:보여주고싶은 페이지버튼갯수
+//wholePages:실제 전체 페이지수
+//pageNum:현재보고있는 페이지 (시작:1페이지)
 
 export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum }) {
   const [paginationBtns, setPaginationBtns] = useState([]);
@@ -17,9 +21,9 @@ export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum 
     const type = e.target.id;
     if (type === "prev") setPageNum((prevPage) => prevPage - 1);
     if (type === "next") setPageNum((prevPage) => prevPage + 1);
-    if (type === "first") setPageNum(0);
-    if (type === "end") setPageNum(wholePages - 1);
-    if (type === "pagination") setPageNum(page - 1);
+    if (type === "first") setPageNum(1);
+    if (type === "end") setPageNum(wholePages);
+    if (type === "pagination") setPageNum(page);
   };
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum 
             key={idx}
             id="pagination"
             page={page}
-            pageNum={pageNum + 1}
+            pageNum={pageNum}
             onClick={(e) => handlePage(e, page)}>
             {page}
           </PaginationBtn>
