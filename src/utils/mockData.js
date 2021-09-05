@@ -137,7 +137,7 @@ const colors = [
   "slategray	#708090		슬레이트그레이",
   "gray	#808080		그래이",
   "dimgray	#696969		딤그레이",
-  "darkslategray	#2F4F4F 다크슬레이트그레이        ",
+  "darkslategray	#2F4F4F 다크슬레이트그레이",
   "black #000000 블랙",
 ];
 

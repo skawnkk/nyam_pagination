@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-
-//PAGE_SIZE:보여주고싶은 페이지버튼갯수
+import { NAME } from "../utils/constants";
+//paginationCount:보여주고싶은 페이지버튼갯수
 //wholePages:실제 전체 페이지수
 //pageNum:현재보고있는 페이지 (시작:1페이지)
 
-export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum }) {
+export default function Pagination({ paginationCount, wholePages, pageNum, setPageNum }) {
   const [paginationBtns, setPaginationBtns] = useState([]);
-  const changeMainPage = (pageNum) => {
-    const totalPageLists = Array.from({ length: wholePages }, (_, idx) => idx + 1);
-    const remains = wholePages - pageNum;
-    if (wholePages <= PAGE_SIZE) return totalPageLists.slice(0, wholePages);
-    if (pageNum <= PAGE_SIZE / 2) return totalPageLists.slice(0, PAGE_SIZE);
-    return pageNum > PAGE_SIZE / 2 && remains <= PAGE_SIZE / 2
-      ? totalPageLists.slice(pageNum - PAGE_SIZE + remains, wholePages)
-      : totalPageLists.slice(pageNum - PAGE_SIZE / 2, pageNum + PAGE_SIZE / 2);
-  };
+
+  const changeMainPage = useCallback(
+    (pageNum) => {
+      const totalPageLists = Array.from({ length: wholePages }, (_, idx) => idx + 1);
+      const remains = wholePages - pageNum;
+      const half = paginationCount / 2;
+      if (wholePages <= paginationCount) return totalPageLists.slice(0, wholePages);
+      if (pageNum <= half) return totalPageLists.slice(0, paginationCount);
+      return pageNum > half && remains <= half
+        ? totalPageLists.slice(pageNum - paginationCount + remains, wholePages)
+        : totalPageLists.slice(pageNum - half - 1, pageNum + half - 1);
+    },
+    [wholePages, paginationCount]
+  );
 
   const handlePage = (e, page) => {
     const type = e.target.id;
@@ -29,17 +34,19 @@ export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum 
   useEffect(() => {
     const currentPageMainLists = changeMainPage(pageNum);
     setPaginationBtns(currentPageMainLists);
-  }, [pageNum, wholePages]);
+  }, [changeMainPage, pageNum, wholePages]);
+
+  const { FIRST, PREV, NEXT, END } = NAME;
 
   return (
     <PaginationWrapper>
       {wholePages !== 0 && (
         <>
-          <OptionBtn id="first" onClick={handlePage} disabled={!pageNum}>
-            {`<< First`}
+          <OptionBtn id="first" onClick={handlePage} disabled={pageNum === 1}>
+            {FIRST}
           </OptionBtn>
-          <OptionBtn id="prev" onClick={handlePage} disabled={!pageNum}>
-            {`< Prev`}
+          <OptionBtn id="prev" onClick={handlePage} disabled={pageNum === 1}>
+            {PREV}
           </OptionBtn>
         </>
       )}
@@ -57,11 +64,11 @@ export default function Pagination({ PAGE_SIZE, wholePages, pageNum, setPageNum 
       </AlignPages>
       {wholePages !== 0 && (
         <>
-          <OptionBtn id="next" onClick={handlePage} disabled={pageNum === wholePages - 1}>
-            Next {` >`}
+          <OptionBtn id="next" onClick={handlePage} disabled={pageNum === wholePages}>
+            {NEXT}
           </OptionBtn>
-          <OptionBtn id="end" onClick={handlePage} disabled={pageNum === wholePages - 1}>
-            End {` >>`}
+          <OptionBtn id="end" onClick={handlePage} disabled={pageNum === wholePages}>
+            {END}
           </OptionBtn>
         </>
       )}
@@ -83,6 +90,10 @@ const PaginationBtn = styled.button`
   margin-right: 5px;
   background-color: ${({ theme, page, pageNum = -1 }) =>
     page === pageNum ? theme.color.button : theme.color.White};
+  color: ${({ theme, page, pageNum = -1 }) =>
+    page === pageNum ? theme.color.White : theme.color.Black};
+
+  cursor: pointer;
 `;
 
 const OptionBtn = styled(PaginationBtn)`
@@ -90,7 +101,6 @@ const OptionBtn = styled(PaginationBtn)`
 `;
 
 const AlignPages = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 250px;
+  ${({ theme }) => theme.flexSet()};
+  margin: auto 20px;
 `;

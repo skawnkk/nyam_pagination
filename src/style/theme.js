@@ -3,7 +3,6 @@ export const theme = {
   color: {
     borderline: "#B6AFAF",
     button: "#AAC14F",
-    buttonHover: "#657A18",
     Black: "#333333",
     White: "#FFFFFF",
   },
