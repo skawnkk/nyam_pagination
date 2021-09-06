@@ -1,7 +1,9 @@
 ## Introduce
 This is Pagination UI.  
 It calculates item counts and shows the content of the page.  
-It works smooth like a butter🥞
+It works smooth like a butter🥞  
+
+![](https://images.velog.io/images/skawnkk/post/d9ef019b-0c95-4864-8ae6-a32224b02773/React-App.gif)
 
 ## Installation
 Copy & paste the following to your CLI:
