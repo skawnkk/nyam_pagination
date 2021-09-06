@@ -2,6 +2,7 @@
 This is Pagination UI.  
 It calculates item counts and shows the content of the page.  
 It works smooth like a butter🥞  
+(details: https://www.npmjs.com/package/nyam-pagination)   
 
 ![](https://images.velog.io/images/skawnkk/post/d9ef019b-0c95-4864-8ae6-a32224b02773/React-App.gif)
 
@@ -21,7 +22,7 @@ npm i nyam-pagination
    |yourDataItems|any[ ]  |whole Datas to render to your Component   |  |
    |itemsPerPage|number| item counts per one page   | 5=> Component will show 5 items |
    |paginationCount|number| pagination range   | 10=> 10 or less pagination button |
-   |NAME|NAME obect|custom Button's innerText by editiny `NAME'  |  |
+   |NAME|NAME obect|custom Button's innerText by editing `NAME'  |  |
 
 
 
