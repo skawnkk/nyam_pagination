@@ -52,7 +52,7 @@ function App() {
       Component={YourComponent} //3
       itemsPerPage={5}
       paginationCount={10}
-      yourDataItems={yourDataItems}
+      wholeDataItems={yourDataItems}
     />
   );
 }
