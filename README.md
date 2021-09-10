@@ -17,16 +17,16 @@ npm i nyam-pagination
 
 ## Usage
 
-1. import PaginationLayout from "nyam-pagination"
-2. import your Component to render
-3. write props
+**1. import PaginationLayout from "nyam-pagination"**  
+**2. import your Component to render**  
+**3. write props****  
    |prop|type|description|ex|
    |:--|:--|:--|:--|
    |Component| |Component to render with pagination | const Component = (`{dataToShow}`)=> {... |
    |yourDataItems|any[ ] |whole Datas to render to your Component | |
    |itemsPerPage|number| item counts per one page | 5=> Component will show 5 items |
    |paginationCount|number| pagination range | 10=> 10 or less pagination button |
-4. custom as your style
+**4. custom as your style**
 
 - ButtonTitle
 - ButtonColor
