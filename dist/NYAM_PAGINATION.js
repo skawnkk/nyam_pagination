@@ -5,7 +5,7 @@ export default function PaginationLayout({
   Component,
   itemsPerPage,
   paginationCount,
-  yourDataItems
+  wholeDataItems
 }) {
   const [dataToShow, setDataToShow] = useState([]);
   const [wholePages, setWholePages] = useState(0);
@@ -22,10 +22,10 @@ export default function PaginationLayout({
     return pageItems;
   }, [itemsPerPage]);
   useEffect(() => {
-    const pagedItem = dividedPageItems(yourDataItems);
+    const pagedItem = dividedPageItems(wholeDataItems);
     setWholePages(pagedItem.length);
     setDataToShow(pagedItem[pageNum - 1] || []);
-  }, [pageNum, dividedPageItems, yourDataItems]); //pagination
+  }, [pageNum, dividedPageItems, wholeDataItems]); //pagination
 
   const [paginationBtns, setPaginationBtns] = useState([]);
   const changeMainPage = useCallback(pageNum => {
