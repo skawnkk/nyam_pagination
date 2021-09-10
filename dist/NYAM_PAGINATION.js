@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import { ButtonTitle, ButtonColor } from "../App.js";
 export default function PaginationLayout({
   Component,
   itemsPerPage,
   paginationCount,
   wholeDataItems,
+  ButtonTitle,
+  ButtonColor,
   ...props
 }) {
   const [dataToShow, setDataToShow] = useState([]);

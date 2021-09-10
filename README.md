@@ -40,23 +40,26 @@ import PaginationLayout from "nyam-pagination"; // 1
 import YourComponent from "./components/YourComponent"; // 2
 import yourDataItems from "./utils/sampleData";
 
-export const ButtonTitle = {
-  //can edit ButtonTittle
-  FIRST: `<< First`,
-  PREV: `< Prev`,
-  NEXT: `Next >`,
-  END: `End  >>`,
-};
-
-export const ButtonColor = "#0000FF"; //can edit ButtonColor
-
 function App() {
+  //can edit ButtonTittle
+  const ButtonTitle = {
+    FIRST: `<< First`,
+    PREV: `< Prev`,
+    NEXT: `Next >`,
+    END: `End  >>`,
+  };
+
+  //can edit ButtonColor
+  const ButtonColor = "#0000FF";
+
   return (
     <PaginationLayout
       Component={YourComponent} //3
       itemsPerPage={5}
       paginationCount={10}
       wholeDataItems={yourDataItems}
+      ButtonTitle={ButtonTitle}
+      ButtonColor={ButtonColor}
     />
   );
 }
@@ -75,8 +78,10 @@ function App() {
       itemsPerPage={5}
       paginationCount={10}
       wholeDataItems={yourDataItems}
-      sampleData={sampleData}
-      sampleFunc={sampleFunc}
+      ButtonTitle={ButtonTitle}
+      ButtonColor={ButtonColor}
+      sampleData={sampleData} //optional
+      sampleFunc={sampleFunc} //optional
     />
   );
 }
@@ -85,8 +90,8 @@ export default App;
 //YourComponent.js
 function YourComponent({wholeDataItems, props}){
 
-  const sampleData = props.sampleData
-  const sampleFunc = props.sampleFunc
+  const sampleData = props?.sampleData
+  const sampleFunc = props?.sampleFunc
   sampleFunc()
   ...
 }
