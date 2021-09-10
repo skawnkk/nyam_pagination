@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 function YourComponent({ dataToShow }) {
-  return dataToShow.map((el) => (
-    <FlexBox>
+  return dataToShow.map((el, idx) => (
+    <FlexBox key={idx}>
       <div>
         <ColorBox color={`#${el[1]}`}>
           <div>{el[0]}</div>

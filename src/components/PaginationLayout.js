@@ -5,6 +5,7 @@ export default function PaginationLayout({
   itemsPerPage,
   paginationCount,
   yourDataItems,
+  NAME,
 }) {
   const [dataToShow, setDataToShow] = useState([]);
   const [wholePages, setWholePages] = useState(0);
@@ -37,6 +38,7 @@ export default function PaginationLayout({
         wholePages={wholePages}
         pageNum={pageNum}
         setPageNum={setPageNum}
+        NAME={NAME}
       />
     </div>
   );
