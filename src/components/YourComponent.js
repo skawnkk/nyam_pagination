@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-function YourComponent({ dataToShow }) {
+function YourComponent({ dataToShow, props }) {
+  // console.log(props);
+
   return dataToShow.map((el, idx) => (
     <FlexBox key={idx}>
       <div>

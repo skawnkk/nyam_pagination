@@ -5,7 +5,8 @@ export default function PaginationLayout({
   Component,
   itemsPerPage,
   paginationCount,
-  wholeDataItems
+  wholeDataItems,
+  ...props
 }) {
   const [dataToShow, setDataToShow] = useState([]);
   const [wholePages, setWholePages] = useState(0);
@@ -59,7 +60,8 @@ export default function PaginationLayout({
     END
   } = ButtonTitle;
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Component, {
-    dataToShow: dataToShow
+    dataToShow: dataToShow,
+    props: props
   }), /*#__PURE__*/React.createElement(PaginationWrapper, null, wholePages !== 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(OptionBtn, {
     id: "first",
     onClick: handlePage,

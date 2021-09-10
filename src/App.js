@@ -11,12 +11,17 @@ export const ButtonTitle = {
 export const ButtonColor = "#0000FF";
 
 function App() {
+  const func = () => 3;
+
+  const str = 10;
   return (
     <PaginationLayout
       Component={YourComponent}
       itemsPerPage={5}
       paginationCount={10}
       wholeDataItems={yourDataItems}
+      func={func}
+      str={str}
     />
   );
 }
