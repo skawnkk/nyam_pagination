@@ -1,6 +1,6 @@
 {
   "name": "nyam-pagination",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "module": "dist/NYAM_PAGINATION.js",
   "main": "dist/NYAM_PAGINATION.js",
   "dependencies": {
