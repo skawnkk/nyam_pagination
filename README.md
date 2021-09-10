@@ -31,6 +31,10 @@ npm i nyam-pagination
 - ButtonTitle
 - ButtonColor
 
+5. deliver data, function etc...needed in yourComponent as `props`
+
+## example 1
+
 ```js
 import PaginationLayout from "nyam-pagination"; // 1
 import YourComponent from "./components/YourComponent"; // 2
@@ -56,5 +60,35 @@ function App() {
     />
   );
 }
+
 export default App;
+```
+
+## example 2 : When passing a value as a prop
+
+```js
+//App.js
+function App() {
+  return (
+    <PaginationLayout
+      Component={YourComponent} //3
+      itemsPerPage={5}
+      paginationCount={10}
+      wholeDataItems={yourDataItems}
+      sampleData={sampleData}
+      sampleFunc={sampleFunc}
+    />
+  );
+}
+export default App;
+
+//YourComponent.js
+function YourComponent({wholeDataItems, props}){
+
+  const sampleData = props.sampleData
+  const sampleFunc = props.sampleFunc
+  sampleFunc()
+  ...
+}
+export default YourComponent;
 ```
