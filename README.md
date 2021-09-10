@@ -19,13 +19,14 @@ npm i nyam-pagination
 
 **1. import PaginationLayout from "nyam-pagination"**  
 **2. import your Component to render**  
-**3. write props\*\***  
- |prop|type|description|ex|
+**3. write props**
+|prop|type|description|ex|
 |:--|:--|:--|:--|
 |Component| |Component to render with pagination | const Component = (`{dataToShow}`)=> {... |
 |yourDataItems|any[ ] |whole Datas to render to your Component | |
 |itemsPerPage|number| item counts per one page | 5=> Component will show 5 items |
 |paginationCount|number| pagination range | 10=> 10 or less pagination button |
+
 **4. custom as your style**
 
 - ButtonTitle
@@ -65,6 +66,13 @@ function App() {
 }
 
 export default App;
+
+//YourComponent.js
+function YourComponent({dataToShow, props}){
+ return dataToShow.map(data=><div>{data}</div>)
+  ...
+}
+export default YourComponent;
 ```
 
 ## example 2 : When passing a value as a prop
@@ -88,7 +96,7 @@ function App() {
 export default App;
 
 //YourComponent.js
-function YourComponent({wholeDataItems, props}){
+function YourComponent({dataToShow, props}){
 
   const sampleData = props?.sampleData
   const sampleFunc = props?.sampleFunc
